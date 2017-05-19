@@ -148,10 +148,11 @@ void DBscan( unsigned char* R, unsigned char* G, unsigned char* B,int Rows,int C
     
     int **ngbC; //record detail pixel in each superpixel 
     ngbC=new int*[pixel];
-    int *neighbours=new int[supnumber*2];
-    for(int i=0;i<supnumber*2;i++)neighbours[i]=0;
+    //int *neighbours=new int[supnumber*2];
+    //for(int i=0;i<supnumber*2;i++)neighbours[i]=0;
+    int *neighbours=new int[pixel*2];
+    for(int i=0;i<pixel*2;i++)neighbours[i]=0;
     int numbngb;
-     
      //////////***********clustering stage******************///////////// 
     for(int i=0;i<pixel;i++)
     {
@@ -236,8 +237,10 @@ void DBscan( unsigned char* R, unsigned char* G, unsigned char* B,int Rows,int C
     int ngb[5],num_neighb;
     for(int i=0;i<5;i++)ngb[i]=0;
     
-    int *neighb=new int[5000];
-    for(int i=0;i<5000;i++)neighb[i]=0;
+    //int *neighb=new int[5000];
+    //for(int i=0;i<5000;i++)neighb[i]=0;
+    int *neighb=new int[pixel*2];
+    for(int i=0;i<pixel*2;i++)neighb[i]=0;
     
      for (int n=1;n<=Nc;n++)
      {
@@ -404,6 +407,7 @@ void DBscan( unsigned char* R, unsigned char* G, unsigned char* B,int Rows,int C
     }
      delete [] labnumb;
      delete [] label0;
+     delete [] neighbours;
      for(int i=1;i<Nc;i++)
          delete [] ngbC[i];
      delete [] ngbC;
