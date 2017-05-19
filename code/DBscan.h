@@ -151,7 +151,6 @@ void DBscan( unsigned char* R, unsigned char* G, unsigned char* B,int Rows,int C
     int *neighbours=new int[supnumber*2];
     for(int i=0;i<supnumber*2;i++)neighbours[i]=0;
     int numbngb;
-     
      //////////***********clustering stage******************///////////// 
     for(int i=0;i<pixel;i++)
     {
@@ -404,6 +403,7 @@ void DBscan( unsigned char* R, unsigned char* G, unsigned char* B,int Rows,int C
     }
      delete [] labnumb;
      delete [] label0;
+     delete [] neighbours;
      for(int i=1;i<Nc;i++)
          delete [] ngbC[i];
      delete [] ngbC;
