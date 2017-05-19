@@ -20,6 +20,7 @@ void mexFunction(int nlhs, mxArray* plhs[], int nrhs, const mxArray* prhs[])
 	Cols = mxGetN(prhs[0]) / 3;
 	img = (unsigned char*)mxGetPr(prhs[0]);
 	supnumber = ((double*)(mxGetPr(prhs[1])))[0];
+  int post = ((double*)(mxGetPr(prhs[2])))[0];
 
 	int pixel = Rows*Cols;
 	R = new  unsigned char[pixel];
@@ -40,7 +41,8 @@ void mexFunction(int nlhs, mxArray* plhs[], int nrhs, const mxArray* prhs[])
 	//  Compute superpixels
 	//--------------------------
 	int realnumber = 0;
-	DBscan(R, G, B, Rows, Cols, label, supnumber, realnumber);
+  //void DBscan( unsigned char* R, unsigned char* G, unsigned char* B,int Rows,int Cols,unsigned short* label,double supnumber,int &realnumber,int post)
+	DBscan(R, G, B, Rows, Cols, label, supnumber, realnumber, post);
 
 
 	plhs[0] = mxCreateNumericMatrix(Rows, Cols, mxUINT16_CLASS, mxREAL);
